@@ -127,7 +127,15 @@ const main = async () => {
                 "W A S D to move",
                 100,
                 "#ffffff",
-                { x: 0.5, y: 0.5 },
+                { x: 0.5, y: 0.4 },
+                0.5
+            );
+            writeTextFade(
+                uiCtx,
+                "Left click to shoot",
+                85,
+                "#ffffff",
+                { x: 0.5, y: 0.55 },
                 0.5
             );
         
@@ -136,7 +144,7 @@ const main = async () => {
                 "Click anywhere to continue",
                 65,
                 "#cccccc",
-                { x: 0.5, y: 0.65 },
+                { x: 0.5, y: 0.7 },
                 0.5
             );
         }
