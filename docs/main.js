@@ -9875,8 +9875,9 @@ const main = async () => {
         }
         else {
             (0, ui_1.drawBlurredUIBackground)(uiCtx, canvas);
-            (0, ui_1.writeTextFade)(uiCtx, "W A S D to move", 100, "#ffffff", { x: 0.5, y: 0.5 }, 0.5);
-            (0, ui_1.writeTextFade)(uiCtx, "Click anywhere to continue", 65, "#cccccc", { x: 0.5, y: 0.65 }, 0.5);
+            (0, ui_1.writeTextFade)(uiCtx, "W A S D to move", 100, "#ffffff", { x: 0.5, y: 0.4 }, 0.5);
+            (0, ui_1.writeTextFade)(uiCtx, "Left click to shoot", 85, "#ffffff", { x: 0.5, y: 0.55 }, 0.5);
+            (0, ui_1.writeTextFade)(uiCtx, "Click anywhere to continue", 65, "#cccccc", { x: 0.5, y: 0.7 }, 0.5);
         }
         window.requestAnimationFrame(loop);
     };
