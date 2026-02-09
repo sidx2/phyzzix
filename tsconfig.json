@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "nodenext",
+    "target": "es2023",
+    "allowJs": true,
+    "moduleResolution": "nodenext",
+    "sourceMap": true,
+    "inlineSources": true,
+    "esModuleInterop": true,
+  },
+  "files": ["src/index.ts"]
+}
