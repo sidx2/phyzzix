@@ -77,6 +77,46 @@ const main = async () => {
     // const body2 = createDynamicConvex(cubeObj, vec3.fromValues(2.5, 1, -5), quat.create(), world);
     // const body3 = createDynamicConvex(cubeObj, vec3.fromValues(0.5, 3, -5), quat.create(), world);
 
+
+    renderer.createCubeMap([
+        {
+            target: WebGL2RenderingContext["TEXTURE_CUBE_MAP_POSITIVE_X"],
+            url: "./Lycksele3/posx.jpg",
+            width: 1024,
+            height: 1024,
+        },
+        {
+            target: WebGL2RenderingContext["TEXTURE_CUBE_MAP_NEGATIVE_X"],
+            url: "./Lycksele3/negx.jpg",
+            width: 1024,
+            height: 1024,
+        },
+        {
+            target: WebGL2RenderingContext["TEXTURE_CUBE_MAP_POSITIVE_Y"],
+            url: "./Lycksele3/posy.jpg",
+            width: 1024,
+            height: 1024,
+        },
+        {
+            target: WebGL2RenderingContext["TEXTURE_CUBE_MAP_NEGATIVE_Y"],
+            url: "./Lycksele3/negy.jpg",
+            width: 1024,
+            height: 1024,
+        },
+        {
+            target: WebGL2RenderingContext["TEXTURE_CUBE_MAP_POSITIVE_Z"],
+            url: "./Lycksele3/posz.jpg",
+            width: 1024,
+            height: 1024,
+        },
+        {
+            target: WebGL2RenderingContext["TEXTURE_CUBE_MAP_NEGATIVE_Z"],
+            url: "./Lycksele3/negz.jpg",
+            width: 1024,
+            height: 1024,
+        },
+    ]);
+
     const keys: Record<string, boolean> = {}
     const mouseDelta: { x: number, y: number } = { x: 0, y: 0 };
 
@@ -107,8 +147,17 @@ const main = async () => {
         const view = fpsController.getViewMatrix();
         const vp = mat4.mul(mat4.create(), projection, view);
 
-        renderer.render(scene, vp);
+        const viewDirectionMatrix = mat4.clone(view);
+        viewDirectionMatrix[12] = 0;
+        viewDirectionMatrix[13] = 0;
+        viewDirectionMatrix[14] = 0;
 
+        const viewDirectionProjection = mat4.multiply(mat4.create(), projection, viewDirectionMatrix);
+
+        const viewDirectionProjectionInverse = mat4.invert(mat4.create(), viewDirectionProjection);
+
+        renderer.drawSkybox(viewDirectionProjectionInverse);
+        renderer.render(scene, vp);
         
         if (document.pointerLockElement) {
             uiCtx.clearRect(0, 0, uiCanvas.width, uiCanvas.height);
